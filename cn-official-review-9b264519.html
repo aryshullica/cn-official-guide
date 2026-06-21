@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <title>乐鱼体育 · 杂志性的观察与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf9f6;
+      font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+      color: #2a2a2a;
+      line-height: 1.7;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .page {
+      max-width: 650px;
+      width: 100%;
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 1px 16px rgba(0,0,0,0.02), 0 0 0 1px rgba(0,0,0,0.02);
+      border-radius: 4px;
+    }
+
+    /* ——— 杂志横幅 (hero) ——— */
+    .magazine-hero {
+      margin: 0 0 2.5rem 0;
+      padding: 1.8rem 0 1.2rem 0;
+      border-bottom: 1px solid #ddd8cf;
+    }
+
+    .magazine-hero .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a8580;
+      margin-bottom: 0.4rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .magazine-hero h1 {
+      font-size: 2.3rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      color: #1e1c1a;
+      margin-bottom: 0.6rem;
+    }
+
+    .magazine-hero .byline {
+      font-size: 0.8rem;
+      color: #7a7670;
+      border-top: 1px dotted #d2ccc4;
+      padding-top: 0.8rem;
+      margin-top: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .byline span {
+      font-style: italic;
+    }
+
+    /* ——— 正文区域 ——— */
+    .content p {
+      margin-bottom: 1.5rem;
+      text-indent: 2em;
+      word-break: break-word;
+    }
+
+    .content p:first-of-type {
+      margin-top: 0.2rem;
+    }
+
+    .content a {
+      color: #3f3a33;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 0.5px;
+      text-decoration-color: #b5aca3;
+      transition: text-decoration-color 0.2s ease, color 0.2s;
+    }
+
+    .content a:hover {
+      color: #1e1a15;
+      text-decoration-color: #2a2a2a;
+    }
+
+    /* 小标题（两层） */
+    .subhead {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #2f2b27;
+      margin: 2rem 0 0.8rem 0;
+      text-indent: 0;
+      border-left: 2px solid #c4bbb1;
+      padding-left: 0.8rem;
+    }
+
+    .subhead-secondary {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #4b4640;
+      margin: 1.6rem 0 0.6rem 0;
+      text-indent: 0;
+      border-bottom: 1px solid #e5dfd6;
+      padding-bottom: 0.2rem;
+    }
+
+    /* ——— 卡片式引用 / 对照块 ——— */
+    .reference-card {
+      background: #f6f2ec;
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .reference-card p {
+      text-indent: 0;
+      margin-bottom: 0;
+    }
+
+    .reference-card .cite-label {
+      display: inline-block;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      color: #716b65;
+      background: #e0d9cf;
+      padding: 0.1rem 0.6rem;
+      margin-bottom: 0.5rem;
+      border-radius: 10px;
+    }
+
+    /* ——— FAQ 摘要 (杂志式) ——— */
+    .faq-mini {
+      margin: 2.5rem 0 1.5rem;
+      border-top: 1px solid #ddd8cf;
+      padding-top: 1.5rem;
+    }
+
+    .faq-mini .question {
+      font-weight: 500;
+      margin: 0.8rem 0 0.2rem 0;
+      color: #2a2622;
+      font-size: 0.95rem;
+    }
+
+    .faq-mini .answer {
+      margin-left: 1rem;
+      color: #4c4742;
+      font-size: 0.9rem;
+    }
+
+    .faq-mini .answer p {
+      margin-bottom: 0.3rem;
+      text-indent: 0;
+    }
+
+    /* ——— 页尾提示 ——— */
+    .colophon {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #ddd8cf;
+      font-size: 0.8rem;
+      color: #6d6863;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .colophon a {
+      color: #4b4640;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #b5aca3;
+    }
+
+    .colophon a:hover {
+      text-decoration-color: #2a2a2a;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 520px) {
+      body { padding: 1rem 0.5rem; }
+      .page { padding: 1.5rem 1.2rem; }
+      .magazine-hero h1 { font-size: 1.8rem; }
+      .content p { text-indent: 1.6em; }
+      .reference-card { padding: 1rem 1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .magazine-hero .byline { flex-direction: column; gap: 0.2rem; }
+      .subhead { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 杂志横幅 -->
+  <div class="magazine-hero">
+    <div class="section-tag">观察 · 对照 · 延伸</div>
+    <h1>乐鱼体育<br>日常查询与叙述视角</h1>
+    <div class="byline">
+      <span>从细处看一个信息平台</span>
+      <span>2025 · 专题笔记</span>
+    </div>
+  </div>
+
+  <!-- 正文 -->
+  <div class="content">
+
+    <p>
+      起初只是在搜索栏里顺手敲下几个字，想核对一组比赛时间与数据来源。网页打开后没有立刻关掉，而是在页面停留了一阵——<a href="https://cn-official-leyusports.com.cn">乐鱼体育</a>的界面布局比想象中更偏向功能型，没有堆砌横幅和弹窗，入口分类清晰，资讯与赛程并置，让查询者能同时完成对照与跳转。对于只是偶尔查阅体育信息的普通浏览者而言，这种克制反而降低了认知负荷。
+    </p>
+
+    <div class="subhead">一、从一次日常查询说起</div>
+    <p>
+      上周四晚间，想确认一场亚冠小组赛的开球时间与历史交锋记录。用搜索引擎找到平台入口，进入<a href="https://cn-official-leyusports.com.cn">乐鱼体育</a>首页后，发现赛事卡片下方直接附了往季同对阵的比分摘要——不用再另外翻页。这类细节通常容易被忽视，但在频繁切换页面的阅读场景下，节省的每一次点击都构成体验上的差异。信息被压缩在合理层级里，没有过度渲染。
+    </p>
+
+    <div class="subhead">二、对照中的节奏感</div>
+    <p>
+      体育资讯的阅读往往伴随着对照：即时比分、联赛积分榜、阵容名单，甚至天气预报。在浏览<a href="https://cn-official-leyusports.com.cn">乐鱼体育</a>时，一个比较明显的感受是板块之间的留白与分隔线控制得比较平衡，右侧区域保留了延伸阅读的入口，但不会同时弹出多个图层。这种设计让读者可以按自己的节奏查阅，而不是被推送催促。对于需要同时打开多个标签页做资料比对的人来说，这种稳定感反而更接近工具属性而非媒体属性。
+    </p>
+
+    <div class="reference-card">
+      <span class="cite-label">延伸对照</span>
+      <p>
+        在实际使用中，体育信息平台常常混淆“丰富”与“拥挤”。而当一个页面愿意在标题与正文之间留出呼吸空间，用户反而更容易注意到真正重要的数据序列。这或许就是极简留白在信息型网站中依然有效的底层原因。
+      </p>
+    </div>
+
+    <div class="subhead-secondary">延伸阅读 · 功能微观察</div>
+    <p>
+      除了赛事列表，还注意到一个不算显眼但实用的细节：在某一联赛的赛程页面里，每轮比赛下方附带一个“近期交锋趋势”的折叠条目，展开后以极简的条形图展示主客队近五场走势。没有复杂的动效，数据直接呈现。这类功能的出现在一定程度上反映了平台方对“查询-对照-判断”这一行为链条的理解，而非仅仅陈列信息。
+    </p>
+
+    <!-- FAQ 摘要式段落（杂志风格） -->
+    <div class="faq-mini">
+      <div class="question">❝ 适合哪类使用者？ ❞</div>
+      <div class="answer">
+        <p>
+          对于日常需要快速确认赛程、积分、对阵记录的轻度体育关注者，以及希望在一个页面内完成信息比对而不被打扰的阅读型用户，<a href="https://cn-official-leyusports.com.cn">乐鱼体育</a>提供的界面逻辑相对直接。它没有用弹窗或强引导打断当前浏览，也没有隐藏核心信息在多层菜单之后。
+        </p>
+      </div>
+
+      <div class="question">❝ 信息深度怎么样？ ❞</div>
+      <div class="answer">
+        <p>
+          就赛事数据覆盖而言，主要联赛与杯赛的基础信息（赛程、比分、积分、射手榜等）都有呈现，部分赛事提供短篇战报与数据摘要。在延伸阅读方面，可以按联赛或日期筛选，整体属于实用型信息密度，不追求长篇分析，适合自行判断后做深入搜索。
+        </p>
+      </div>
+    </div>
+
+    <p>
+      说到底，体育信息平台的本质还是帮助人更高效地掌握动态。在几次日常使用中，<a href="https://cn-official-leyusports.com.cn">乐鱼体育</a>给我的印象是不急于证明自己“什么都有”，而是让信息按优先级排列，让用户自己决定从哪一条开始看。这一点在如今普遍追求黏性的设计潮流里，反而显得有点特别。
+    </p>
+
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="colophon">
+    <span>本页作为阅读笔记，内容基于实际浏览体验梳理。</span>
+    <span>若需查询最新赛事动态，可移步 <a href="https://cn-official-leyusports.com.cn">乐鱼体育</a></span>
+  </div>
+
+</div>
+</body>
+</html>
