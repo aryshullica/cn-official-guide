@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞彩网 · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a1f2e;
+      padding: 2.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-container {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 主视觉 —— 留白卡片叠层 */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: linear-gradient(90deg, #c8d6e5, #8395a7);
+      border-radius: 0 0 4px 4px;
+      opacity: 0.3;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+      color: #0b1a2a;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #3b4252;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero .quiet-tag {
+      display: inline-block;
+      background: #eef1f5;
+      color: #4a5b6e;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      margin-top: 1.2rem;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border: 1px solid #eaedf2;
+      transition: border-color 0.15s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #d0d7e0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1d2b3e;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h2 .icon-em {
+      font-size: 1.3rem;
+      opacity: 0.7;
+    }
+
+    .card p, .card li {
+      color: #34495e;
+      font-size: 0.96rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .card ul li::before {
+      content: '—';
+      color: #94a3b3;
+      font-weight: 300;
+      margin-right: 0.2rem;
+    }
+
+    .background-note {
+      background: #f8faff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #e3e9f2;
+    }
+
+    .background-note p {
+      color: #2e3b4e;
+      font-size: 0.96rem;
+      margin-bottom: 1rem;
+    }
+
+    .background-note .link-sentence {
+      font-style: normal;
+      background: #ffffff;
+      padding: 0.6rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    a {
+      color: #1f4f7a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.1s;
+      font-weight: 400;
+    }
+
+    a:hover {
+      border-bottom-color: #1f4f7a;
+    }
+
+    /* FAQ 摘要 — 极简问号卡片 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.2rem;
+      border: 1px solid #eaedf2;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1f2d3d;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 450;
+      color: #1f3550;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-item .a {
+      color: #4b5c70;
+      font-size: 0.93rem;
+      padding-left: 0.2rem;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #dce2ea;
+      margin: 1.8rem 0 1.2rem 0;
+      opacity: 0.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6a7b8c;
+      margin-top: 1rem;
+      padding: 0.8rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      body { padding: 1.5rem 0.8rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .card { padding: 1.5rem 1.2rem; }
+      .faq-mini { padding: 1.5rem 1.2rem; }
+      .background-note { padding: 1.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <!-- 主视觉 -->
+    <div class="hero">
+      <h1>日常查询 · 对照 · 延伸</h1>
+      <p>无论是开赛前快速核对指数变化，还是赛后复盘数据，一个清晰、稳定的信息起点能节省不少时间。很多人习惯把 <a href="https://signin-jcw.com">竞彩网</a> 放在书签栏的某个角落，需要时随手点开，比翻来覆去找第三方要省心。</p>
+      <p>页面没有复杂的跳转，只围绕查询与对照这两个基本动作展开。你可以把它当作一个安静的参考站，而不是喧闹的信息广场。</p>
+      <span class="quiet-tag">对照 · 延伸 · 备忘</span>
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <h2><span class="icon-em">📋</span> 用途卡片</h2>
+        <p>页面提供三类常用信息入口：</p>
+        <ul>
+          <li>赛事日程与实时比分 — 按日期、联赛筛选，减少干扰项</li>
+          <li>平均指数与离散值 — 适合横向对比多个平台数据</li>
+          <li>历史交锋与近期战绩 — 辅助判断趋势，而非简单看胜负</li>
+        </ul>
+        <p style="margin-top: 0.7rem;">每个模块保持窄列布局，一眼扫过去就能找到重点，不需要反复滑动或点击展开。</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon-em">🧑‍🤝‍🧑</span> 适合人群</h2>
+        <ul>
+          <li>习惯自己做笔记、不喜欢被推送算法干扰的人</li>
+          <li>日常需要快速查阅竞彩相关资料、但不想陷入社区讨论的读者</li>
+          <li>希望从原始数据里自己找规律，而不是直接看结论的爱好者</li>
+        </ul>
+        <p style="margin-top: 0.5rem;">如果你也属于这类「自取所需」的浏览者，或许会觉得这里的节奏正好。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 + 延伸阅读背景 -->
+    <div class="background-note">
+      <p>有人把查询比作整理抽屉——东西放对了位置，用时就不用翻箱倒柜。对于足球、篮球赛事的数据对照，<a href="https://signin-jcw.com">竞彩网</a> 就像那个分类清晰的抽屉：联赛、杯赛、友谊赛各自归位，指数与走势并排陈列。你可以快速从一场比赛跳到另一场，而不必每次都重新输入关键词。</p>
+      <p>另外，很多用户会在赛前用它的「指数对照」功能，把几家主流机构的数据放在一起看，再结合自己的笔记做判断。这种朴素的对照方式，其实比依赖单一数字更可靠。</p>
+      <div class="link-sentence">
+        ⚡ 延伸阅读：有人整理过「指数波动与赛果关联」的观察笔记，<a href="https://signin-jcw.com">竞彩网</a> 的赛事列表页面适合作为那类分析的起点。
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h3>常见想法 · 简短回应</h3>
+      <div class="faq-item">
+        <div class="q">—— 页面数据更新快吗？</div>
+        <div class="a">通常与官方同步，遇临场变动会有几分钟延迟，但查阅历史数据完全不受影响。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">—— 需要注册或登录才能浏览？</div>
+        <div class="a">大部分内容开放阅读，个别深度筛选或自定义提醒功能可凭账户使用，但日常查询无需登录。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">—— 手机上看方便吗？</div>
+        <div class="a">页面采用响应式窄栏，手机浏览器直接打开即可，不需要额外缩放。</div>
+      </div>
+    </div>
+
+    <!-- 极简分隔 -->
+    <hr>
+
+    <div class="footer-note">
+      信息卡片 · 2025 · 内容仅供个人参考
+    </div>
+  </div>
+</body>
+</html>
