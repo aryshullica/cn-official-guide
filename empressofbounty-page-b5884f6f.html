@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>赏金女王 · 简明使用指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f5f9fc;
+      color: #1a2a36;
+      line-height: 1.6;
+      padding: 20px 16px 40px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* 头部 / 简明标识 */
+    .site-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 10px 0 6px;
+      border-bottom: 1px solid #d0e2ea;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    .site-header .brand {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #1d5b6b;
+    }
+
+    .site-header .tag {
+      font-size: 0.8rem;
+      color: #4f6b79;
+      background: #e2eef5;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* hero 区 – 产品摘要 */
+    .hero-compact {
+      background: linear-gradient(145deg, #d9eef5 0%, #eef7fa 100%);
+      border-radius: 24px;
+      padding: 32px 26px;
+      margin-bottom: 32px;
+      border: 1px solid #bcdae6;
+      box-shadow: 0 4px 10px rgba(23, 78, 92, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-compact h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0e4150;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .hero-compact .summary {
+      font-size: 1rem;
+      color: #1b4b5c;
+      max-width: 720px;
+    }
+
+    .hero-compact .summary a {
+      color: #026377;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .hero-compact .summary a:hover {
+      color: #013946;
+      text-decoration-color: #0b8ba0;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #2b5b6b;
+    }
+
+    .hero-meta span {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 4px 14px;
+      border-radius: 30px;
+      border: 1px solid #c7dde9;
+    }
+
+    /* 网格卡片 – 亮点与建议 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px 20px;
+      border: 1px solid #d9e7ef;
+      box-shadow: 0 2px 6px rgba(19, 67, 80, 0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(15, 80, 95, 0.08);
+      border-color: #b3d4e3;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #135462;
+      margin-bottom: 10px;
+      border-left: 4px solid #24a0b8;
+      padding-left: 12px;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #1d3e4b;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .card li {
+      padding: 6px 0 4px 22px;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #1f8a9e;
+      font-weight: 600;
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      background: #e3f0f6;
+      color: #1b5567;
+      font-size: 0.78rem;
+      padding: 4px 14px;
+      border-radius: 30px;
+      border: 1px solid #b8d6e4;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    /* 使用建议 / 场景 */
+    .scene-note {
+      background: #e9f3f8;
+      border-radius: 20px;
+      padding: 26px 24px;
+      margin-bottom: 30px;
+      border: 1px solid #c3dae7;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .scene-note h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0d4657;
+      letter-spacing: -0.2px;
+    }
+
+    .scene-note .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+    }
+
+    .scene-item {
+      flex: 1 1 180px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid #d3e3ee;
+    }
+
+    .scene-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #0d4d5e;
+      margin-bottom: 4px;
+    }
+
+    .scene-item span {
+      font-size: 0.9rem;
+      color: #1c4b5a;
+    }
+
+    /* 提示 & 节制说明 */
+    .reminder-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 22px;
+      border: 1px solid #d3e2ec;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 8px rgba(18, 68, 82, 0.03);
+    }
+
+    .reminder-box h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b5263;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reminder-box h3::before {
+      content: "⏺";
+      color: #1a8a9e;
+      font-size: 1.2rem;
+    }
+
+    .reminder-box p {
+      font-size: 0.94rem;
+      color: #214a58;
+      margin-bottom: 8px;
+    }
+
+    .reminder-box .meta-footnote {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #3d6575;
+      padding: 10px 14px;
+      background: #eff6fa;
+      border-radius: 14px;
+    }
+
+    /* faq 摘要 – 极简 */
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+      margin-bottom: 28px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px 18px;
+      border: 1px solid #d7e5f0;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #0f4c5c;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .faq-item .a {
+      font-size: 0.88rem;
+      color: #1f4b59;
+      line-height: 1.5;
+    }
+
+    /* 底部 */
+    .footer-note {
+      border-top: 1px solid #d1e1eb;
+      padding-top: 20px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: #416d7c;
+    }
+
+    .footer-note a {
+      color: #0d6b7e;
+      text-decoration: none;
+      border-bottom: 1px solid #b2cfdd;
+    }
+
+    .footer-note a:hover {
+      border-bottom: 1px solid #0e7d93;
+      color: #013946;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-compact h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-compact {
+        padding: 24px 18px;
+      }
+
+      body {
+        padding: 16px 12px 32px;
+      }
+
+      .scene-item {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .hero-compact {
+        padding: 40px 38px;
+      }
+
+      .card {
+        padding: 28px 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 头部 -->
+    <header class="site-header">
+      <span class="brand">产品说明 · 简明指南</span>
+      <span class="tag">赏金女王 · 摘要</span>
+    </header>
+
+    <!-- hero / 摘要 + 嵌入链接 -->
+    <div class="hero-compact">
+      <h1>赏金女王：使用前的一页指南</h1>
+      <div class="summary">
+        <p>本文档概述 <a href="https://empressofbounty.com">赏金女王</a> 的基本定位与访问要点，帮助新使用者快速了解其功能轮廓、适用场景以及值得留意的边界。以下内容基于产品公开信息整理，不构成操作承诺或收益保证。</p>
+      </div>
+      <div class="hero-meta">
+        <span>📌 面向使用者</span>
+        <span>⚙️ 核心功能摘要</span>
+        <span>🧩 版本参考 v2.1</span>
+      </div>
+    </div>
+
+    <!-- 两栏：亮点 + 使用建议 -->
+    <div class="grid-2col">
+      <div class="card">
+        <h3>功能亮点速览</h3>
+        <ul>
+          <li>集成多级任务逻辑与触发机制</li>
+          <li>动态反馈体系，支持自定义参数</li>
+          <li>界面风格统一，适配常用设备</li>
+          <li>数据记录结构清晰，便于回溯</li>
+        </ul>
+        <div class="badge-group">
+          <span class="badge">响应式</span>
+          <span class="badge">模块化</span>
+          <span class="badge">轻量</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>使用建议</h3>
+        <ul>
+          <li>初次使用时，优先查阅内置说明模块</li>
+          <li>根据个人偏好调整参数，避免极端数值</li>
+          <li>定期保存进度，留意网络环境变化</li>
+          <li>关注官方更新日志，了解调整项</li>
+        </ul>
+        <div class="badge-group">
+          <span class="badge">循序渐进</span>
+          <span class="badge">文档优先</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景引导 -->
+    <div class="scene-note">
+      <h2>适用场景参考</h2>
+      <div class="row">
+        <div class="scene-item">
+          <strong>日常探索</strong>
+          <span>适合规律性使用，保持适度节奏</span>
+        </div>
+        <div class="scene-item">
+          <strong>策略尝试</strong>
+          <span>利用系统机制，测试不同路径</span>
+        </div>
+        <div class="scene-item">
+          <strong>数据回看</strong>
+          <span>回顾历史记录，辅助后续决策</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="reminder-box">
+      <h3>访问说明 · 节制提醒</h3>
+      <p>产品 <a href="https://empressofbounty.com" style="color:#026377;text-decoration:underline;">赏金女王</a> 提供了一套结构化的交互框架，所有功能均基于既定规则运行。使用者应理性评估时间分配，避免持续投入超出个人预期。系统不承诺特定结果，亦不鼓励非计划性使用。</p>
+      <p>建议每次使用前明确目标，中途留意状态变化。如遇异常或不确定的情形，可暂时中止并查阅帮助信息。</p>
+      <div class="meta-footnote">
+        ⚠️ 任何线上工具均存在不确定性，请依据自身情况做出判断。本页面仅作客观介绍。
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h3 style="font-size:1rem; font-weight:600; color:#0b4d5d; margin-bottom:8px;">常见疑问摘要</h3>
+    <div class="faq-mini">
+      <div class="faq-item">
+        <div class="q">是否需要注册？</div>
+        <div class="a">通常只需基础账户即可体验主要功能，具体依平台策略而定。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">数据是否本地存储？</div>
+        <div class="a">部分配置记录于本地，关键进度建议手动备份。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">能否多设备同步？</div>
+        <div class="a">若平台支持，可通过同一账户同步设置，请留意网络一致性。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">是否有使用上限？</div>
+        <div class="a">大部分功能无硬性上限，但合理使用体验更佳。</div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      <span>© 简明索引 · 产品信息页</span>
+      <span>内容参考自公开资料 · <a href="https://empressofbounty.com">赏金女王</a></span>
+    </div>
+  </div>
+</body>
+</html>
